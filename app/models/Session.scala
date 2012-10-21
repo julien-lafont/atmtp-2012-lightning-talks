@@ -26,8 +26,10 @@ case class Session(
   def ajouterConsultation() =
     this.copy(consultation = consultation + 1)
 
-  def withDetails(implicit request: RequestHeader) =
-    Talk(this, Orateur.findById(orateurId).get, Vote.peutVoter(this))
+  def withDetails(implicit request: RequestHeader) : Talk =
+    Talk(this, Orateur.findById(orateurId).get, Vote.peutVoter(this)(request))
+    
+  def nbVotesHtml() : String = vote + (if (vote <= 1) " vote" else " votes")
     
 }
 

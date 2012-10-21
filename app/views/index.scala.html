@@ -30,7 +30,7 @@
 		<tr>
 			<td><a href="@routes.Application.detail(talk.session.slug)">@talk.session.titre</a></td>
 			<td>@talk.orateur.nom</td>
-			<td><span class="lead">@talk.session.vote votes</span></td>
+			<td><span class="lead">@talk.session.nbVotesHtml</span></td>
 		  <td style="text-align:center"> 
 				<a href="@routes.Application.voter(talk.session.slug)?redir=home" class="btn btn-mini @if(talk.statutVote) { vote-off } else { btn-success vote-on }">
 					 

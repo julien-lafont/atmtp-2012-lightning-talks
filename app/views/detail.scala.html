@@ -17,13 +17,13 @@
 	<p class="lead">@Html(talk.session.description.replaceAll("<", "").replaceAll("\n", "<br />"))</p>
 	
 	<blockquote>
-		Bio : @talk.orateur.bio<br />
+		@Html(talk.orateur.bio.replaceAll("<", "").replaceAll("\n", "<br />"))<br />
 		<small>@talk.orateur.nom</small>
 	</blockquote>
 	
 	
 	<div class="alert alert-info">
-		<strong>@talk.session.vote votes</strong> &nbsp;&nbsp;
+		<strong>@talk.session.nbVotesHtml</strong> &nbsp;&nbsp;
 		
 		<a href="@routes.Application.voter(talk.session.slug)" class="btn btn-mini @if(talk.statutVote) { } else { btn-success }">
 			@if(talk.statutVote) { <i class="icon-thumbs-up"></i> Voter } else { <i class="icon-thumbs-down"></i> Retirer mon vote }
