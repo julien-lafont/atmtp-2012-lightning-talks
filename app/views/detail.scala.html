@@ -13,7 +13,8 @@
 		</h1>
 	</div>
 	
-	<p class="lead">@talk.session.description</p>
+	<!-- LaRache compliant -->
+	<p class="lead">@Html(talk.session.description.replaceAll("<", "").replaceAll("\n", "<br />"))</p>
 	
 	<blockquote>
 		Bio : @talk.orateur.bio<br />
