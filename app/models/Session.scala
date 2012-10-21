@@ -28,6 +28,7 @@ case class Session(
 
   def withDetails(implicit request: RequestHeader) =
     Talk(this, Orateur.findById(orateurId).get, Vote.peutVoter(this))
+    
 }
 
 case class Talk(
@@ -70,6 +71,9 @@ object Session extends ModelCompanion[Session, ObjectId] {
   }
 
   def insertTestData(titre: String, description: String, orateur: ObjectId): Option[ObjectId] =
-    dao.insert(Session(titre = titre, slug = titre.toLowerCase().replaceAll(" ", "-"), description = description, orateurId = orateur))
+    dao.insert(Session(titre = titre, slug = slugify(titre), description = description, orateurId = orateur))
+    
+  // TODO : Améliorer
+  private def slugify(titre: String) = titre.toLowerCase().replaceAll("[^a-zA-Z0-9-]", "-")
 
 }
