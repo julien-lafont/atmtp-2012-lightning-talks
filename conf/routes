@@ -6,8 +6,8 @@
 GET     /                           controllers.Application.index
 GET     /trier/:colonne             controllers.Application.trier(colonne: String)
 
-POST    /lightning/soumettre        controllers.Application.ajouterSession
-GET     /lightning/soumettre        controllers.Application.soumettre
+POST    /lightning/soumettre        controllers.Propositions.enregistrer
+GET     /lightning/soumettre        controllers.Propositions.formulaire
 
 
 GET     /lightning/:slug            controllers.Application.detail(slug: String)

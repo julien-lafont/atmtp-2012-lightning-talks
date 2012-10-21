@@ -6,8 +6,9 @@
 <head>
 <title>@title</title>
 <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-<script src="@routes.Assets.at(" javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
-<script src="@routes.Assets.at(" javascripts/bootstrap.min.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/jquery-1.7.1.min.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/bootstrap.min.js")" type="text/javascript"></script>
+<script src="@routes.Assets.at("javascripts/main.js")" type="text/javascript"></script>
 
 <link type="text/css" rel="stylesheet" href="@routes.Assets.at("stylesheets/bootstrap.min.css")">
 <link type="text/css" rel="stylesheet" href="@routes.Assets.at("stylesheets/main.css")">
@@ -28,7 +29,7 @@
 				<div class="nav-collapse collapse">
 					<ul class="nav">
 						<li><a href="@routes.Application.index">Propositions</a></li>
-						<li><a href="@routes.Application.soumettre">Soumettre mon LT</a></li>
+						<li><a href="@routes.Propositions.formulaire">Soumettre mon LT</a></li>
 					</ul>
 					
 					<ul class="nav pull-right">

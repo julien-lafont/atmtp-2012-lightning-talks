@@ -10,20 +10,20 @@ import se.radley.plugin.salat._
 import mongoContext._
 
 case class Orateur(
-	@Key("_id") id: ObjectId = new ObjectId,
-	nom: String,
-	bio: String,
-	socialId: String, // twitter name, google+ id ...
-	socialType: String, // twitter|google|facebook ...
-	avatar: Option[String] = None,
-	twitter: Option[String] = None)
+  @Key("_id") id: ObjectId = new ObjectId,
+  nom: String,
+  bio: String,
+  socialId: String, // twitter name, google+ id ...
+  socialType: String, // twitter|google|facebook ...
+  avatar: Option[String] = None,
+  twitter: Option[String] = None)
 
-object Orateur extends ModelCompanion[Orateur, ObjectId] { 
-  val dao = new SalatDAO[Orateur, ObjectId](collection = mongoCollection("orateurs")) { }
-  
-  def findById(id: ObjectId) : Option[Orateur] = dao.findOneById(id)
-  
-  def insertTestData(nom: String, bio: String) = 
-  	dao.insert(Orateur(nom = nom, bio = bio, socialId = "/", socialType = "/"))
-  
+object Orateur extends ModelCompanion[Orateur, ObjectId] {
+  val dao = new SalatDAO[Orateur, ObjectId](collection = mongoCollection("orateurs")) {}
+
+  def findById(id: ObjectId): Option[Orateur] = dao.findOneById(id)
+
+  def insertTestData(nom: String, bio: String) =
+    dao.insert(Orateur(nom = nom, bio = bio, socialId = "/", socialType = "/"))
+
 }

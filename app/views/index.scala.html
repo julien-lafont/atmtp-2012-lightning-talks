@@ -11,7 +11,7 @@
 		participants, votre sujet peut être choisi. Les sujets gagnants seront annoncés le jour de la conférence.</p>
 	<p></p>
 	<div class="alert-actions">
-		<a class="btn" href="@routes.Application.soumettre" title="Proposer un Lightning Talk">Proposer un Lightning Talk</a>
+		<a class="btn" href="@routes.Propositions.formulaire" title="Proposer un Lightning Talk">Proposer un Lightning Talk</a>
 	</div>
 </div>
 
@@ -30,8 +30,8 @@
 			<td><a href="@routes.Application.detail(talk.session.slug)">@talk.session.titre</a></td>
 			<td>@talk.orateur.nom</td>
 			<td class="lead">@talk.session.vote votes 
-				<a href="@routes.Application.voter(talk.session.slug)" class="btn btn-mini @if(talk.statutVote) { btn-info vote-off } else { vote-on }">
-					<strong>@if(talk.statutVote) { +1 } else { -1 }</strong>
+				<a href="@routes.Application.voter(talk.session.slug)?redir=home" class="btn btn-mini @if(talk.statutVote) { btn-info vote-off } else { vote-on }">
+					@if(talk.statutVote) { Voter } else { +1 }
 				</a>
 			</td>
 		</tr>
