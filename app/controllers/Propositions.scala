@@ -29,8 +29,8 @@ object Propositions extends Controller {
       "titre" -> text.verifying(nonEmpty),
       "description" -> text.verifying(minLength(50)),
       "nom" -> text.verifying(nonEmpty),
-      "bio" -> text,
-      "socialId" -> text.verifying(nonEmpty),
-      "socialType" -> text.verifying(nonEmpty))(NewTalk.apply)(NewTalk.unapply))
+      "bio" -> text.verifying(nonEmpty),
+      "twitter" -> text.verifying(nonEmpty))
+      (NewTalk.apply)(NewTalk.unapply))
 
 }

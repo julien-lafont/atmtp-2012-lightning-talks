@@ -14,3 +14,11 @@ body {
 	float:right;
 	margin-top: 0px
 }
+
+.alert-info iframe {
+	vertical-align: middle;
+}
+
+#description {
+	height: 80px
+}

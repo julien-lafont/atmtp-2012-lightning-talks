@@ -1,10 +1,15 @@
 @(talk : models.Talk) 
 
-@main("Lightning Talks Agile Tour Montpellier 2012 : "+talk.session.titre) {
+@main("Lightning Talks Agile Tour Montpellier : "+talk.session.titre + talk.orateur.twitter.map{ tw => " (@"+tw+")" }.getOrElse("")) {
 
 	<div class="page-header">
 		<h1>
-			@talk.session.titre <small>@talk.orateur.nom</small>
+			@talk.session.titre <small>
+			@if(talk.orateur.twitter.isDefined) {
+				<a href="http://www.twitter.com/@talk.orateur.twitter">@talk.orateur.nom</a>
+			} else {
+				@talk.orateur.nom
+			}</small>
 		</h1>
 	</div>
 	
@@ -23,7 +28,12 @@
 			@if(talk.statutVote) { <i class="icon-thumbs-up"></i> Voter } else { <i class="icon-thumbs-down"></i> Retirer mon vote }
 		</a>
 		
+		
 		<div class="consultation">
+			
+			<a href="https://twitter.com/share?related=@talk.orateur.twitter.getOrElse("atmtp")&hashtags=atmtp&via=atmtp" class="twitter-share-button" data-lang="fr">Tweet</a>
+			<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="https://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+			
 			Consulté @talk.session.consultation fois
 		</div>
 	</div>

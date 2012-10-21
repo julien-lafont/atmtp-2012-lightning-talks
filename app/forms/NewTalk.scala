@@ -8,16 +8,16 @@ case class NewTalk(
   description: String,
   nom: String,
   bio: String,
-  socialId: String,
-  socialType: String)
+  twitter: String)
 
 object NewTalk {
   def enregistrer(talk: NewTalk): Option[Session] = {
     val orateur = Orateur(
       nom = talk.nom,
       bio = talk.bio,
-      socialId = talk.socialId,
-      socialType = talk.socialType)
+      socialId = talk.twitter,
+      socialType = "twitter",
+      twitter = Some(talk.twitter))
 
     Orateur.insert(orateur).flatMap { orateurId =>
       val session = Session(

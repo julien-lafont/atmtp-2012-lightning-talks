@@ -10,9 +10,8 @@
   @helper.inputText(talkForm("titre"), 'placeholder -> "Titre de votre Lightning Talk", 'class -> "input-xlarge")
   @helper.textarea(talkForm("description"), 'placeholder -> "Décrivez votre talk en quelques mots", 'class -> "input-xxlarge")
   @helper.inputText(talkForm("nom"), 'placeholder -> "Prénom Nom", '_label -> "Et vous ?")
-  @helper.inputText(talkForm("bio"), 'placeholder -> "Qui êtes vous ?", '_label -> "Biographie", 'class -> "input-xxlarge")
-  @helper.inputText(talkForm("socialId"), 'placeholder -> "Identifiant réseau social", '_label -> "Identifiant")
-  @helper.inputText(talkForm("socialType"), 'placeholder -> "Réseau social utilisé (twitter/google)", '_label -> "Réseau social")
+  @helper.textarea(talkForm("bio"), 'placeholder -> "Qui êtes vous ?", '_label -> "Biographie", 'class -> "input-xxlarge")
+  @helper.inputText(talkForm("twitter"), 'placeholder -> "Identifiant twitter", '_label -> "Identifiant")
 
   <input type="submit" class="btn" />
 }
