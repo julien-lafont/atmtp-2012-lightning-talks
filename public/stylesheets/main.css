@@ -1,0 +1,23 @@
+body {
+	padding-top: 60px
+}
+
+.message-accueil {
+	color: #000
+}
+
+.vote-on:hover {
+	color: white;
+	text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
+	background-color: #DA4F49;
+	background-image: -webkit-gradient(linear,0 0,0 100%,from(#EE5F5B),to(#BD362F));
+	background-image: -webkit-linear-gradient(top,#EE5F5B,#BD362F);
+	background-image: -o-linear-gradient(top,#EE5F5B,#BD362F);
+	background-image: linear-gradient(to bottom,#EE5F5B,#BD362F);
+	background-image: -moz-linear-gradient(top,#EE5F5B,#BD362F);
+	background-repeat: repeat-x;
+	border-color: #BD362F #BD362F #802420;
+	border-color: rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.1) rgba(0, 0, 0, 0.25);
+	filter: progid:dximagetransform.microsoft.gradient(startColorstr='#ffee5f5b',endColorstr='#ffbd362f',GradientType=0);
+	filter: progid:dximagetransform.microsoft.gradient(enabled=false);
+}

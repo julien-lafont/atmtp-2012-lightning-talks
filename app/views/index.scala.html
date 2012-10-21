@@ -1,0 +1,42 @@
+@(talks : List[Talk]) 
+
+@main("Lightning Talk - Agile Tour Montpellier 2012") {
+
+<div class="alert message-accueil">
+	<p>
+		Tout participant peut <strong>proposer</strong> un Lightning Talk et <strong>voter</strong> pour ceux qui l'intéressent. Il s'agit de sessions courtes de 5 minutes qui auront lieu entre 13h45 et 14h45 le
+		jour de la conférence.
+	</p>
+	<p>Pourquoi ne pas tenter votre chance? C'est l'occasion de synthétiser votre connaissance sur un sujet et de donner aux autres participants envie de le connaître plus! En fonction des votes des
+		participants, votre sujet peut être choisi. Les sujets gagnants seront annoncés le jour de la conférence.</p>
+	<p></p>
+	<div class="alert-actions">
+		<a class="btn" href="@routes.Application.soumettre" title="Proposer un Lightning Talk">Proposer un Lightning Talk</a>
+	</div>
+</div>
+
+
+<table class="table table-striped">
+	<thead>
+		<tr>
+			<th><a href="@routes.Application.trier("titre")">Titre</a></th>
+			<th>Speeker</th>
+			<th><a href="@routes.Application.trier("vote")">Votes</a></th>
+		</tr>
+	</thead>
+	<tbody>
+		@for(talk <- talks) {
+		<tr>
+			<td><a href="@routes.Application.detail(talk.session.slug)">@talk.session.titre</a></td>
+			<td>@talk.orateur.nom</td>
+			<td class="lead">@talk.session.vote votes 
+				<a href="@routes.Application.voter(talk.session.slug)" class="btn btn-mini @if(talk.statutVote) { btn-info vote-off } else { vote-on }">
+					<strong>@if(talk.statutVote) { +1 } else { -1 }</strong>
+				</a>
+			</td>
+		</tr>
+		}
+	</tbody>
+</table>
+
+}

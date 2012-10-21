@@ -1,0 +1,20 @@
+@(talk : models.Talk)
+
+@main("Lightning Talks Agile Tour Montpellier 2012 : "+talk.session.titre) {
+    <h1>Lightning-talk : @talk.session.titre</h1>
+    
+    <p>@talk.session.description</p>
+    <p>Nombre de votes : @talk.session.vote 
+    	@if(talk.statutVote) {
+    		(<a href="@routes.Application.voter(talk.session.slug)">+1</a>)
+    	}
+    </p>
+    <p>Nombre de consultation : @talk.session.consultation</p>
+    
+    <hr />
+    <p>Nom : @talk.orateur.nom</p>
+    <p>Bio : @talk.orateur.bio</p>
+    
+    
+    
+}
