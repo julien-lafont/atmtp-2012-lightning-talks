@@ -30,8 +30,8 @@
 			<td><a href="@routes.Application.detail(talk.session.slug)">@talk.session.titre</a></td>
 			<td>@talk.orateur.nom</td>
 			<td class="lead">@talk.session.vote votes 
-				<a href="@routes.Application.voter(talk.session.slug)?redir=home" class="btn btn-mini @if(talk.statutVote) { btn-info vote-off } else { vote-on }">
-					@if(talk.statutVote) { Voter } else { +1 }
+				<a href="@routes.Application.voter(talk.session.slug)?redir=home" class="btn btn-mini @if(talk.statutVote) { vote-off } else { btn-success vote-on }">
+					@if(talk.statutVote) { Voter } else { ✓ }
 				</a>
 			</td>
 		</tr>

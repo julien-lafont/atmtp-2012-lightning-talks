@@ -1,7 +1,13 @@
 $(function() {
 	$(".vote-on").hover(function() {
-		$(this).text("-1").addClass("btn-danger");
+		$(this).addClass("btn-danger").removeClass("btn-success");
 	}, function() {
-		$(this).text("+1").removeClass("btn-danger");
+		$(this).addClass("btn-success").removeClass("btn-danger");
+	})
+	
+	$(".vote-off").hover(function() {
+		$(this).addClass("btn-info");
+	}, function() {
+		$(this).removeClass("btn-info");
 	})
 });

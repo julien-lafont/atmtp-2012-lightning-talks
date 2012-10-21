@@ -13,7 +13,6 @@ import play.api.data.validation.Constraints._
 object Application extends Controller {
 
   def index = Action { implicit req =>
-    println(req.remoteAddress)
     Ok(views.html.index(Session.findAllTalks(getTriSession)))
   }
 
