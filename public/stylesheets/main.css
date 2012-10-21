@@ -10,3 +10,7 @@ body {
 	font-weight: bold
 }
 
+.consultation {
+	float:right;
+	margin-top: 0px
+}

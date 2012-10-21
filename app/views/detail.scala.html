@@ -2,22 +2,33 @@
 
 @main("Lightning Talks Agile Tour Montpellier 2012 : "+talk.session.titre) {
 
-<div class="page-header">
-	<h1>
-		@talk.session.titre <small>@talk.orateur.nom</small>
-	</h1>
-</div>
-
-<p>@talk.session.description</p>
-<p>
-	Nombre de votes : @talk.session.vote @if(talk.statutVote) { (<a href="@routes.Application.voter(talk.session.slug)">+1</a>) }
-</p>
-<p>Nombre de consultation : @talk.session.consultation</p>
-
-<hr />
-<p>Nom : @talk.orateur.nom</p>
-<p>Bio : @talk.orateur.bio</p>
-
-
-
+	<div class="page-header">
+		<h1>
+			@talk.session.titre <small>@talk.orateur.nom</small>
+		</h1>
+	</div>
+	
+	<p class="lead">@talk.session.description</p>
+	
+	<blockquote>
+		Bio : @talk.orateur.bio<br />
+		<small>@talk.orateur.nom</small>
+	</blockquote>
+	
+	
+	<div class="alert alert-info">
+		<strong>@talk.session.vote votes</strong> &nbsp;&nbsp;
+		
+		<a href="@routes.Application.voter(talk.session.slug)" class="btn btn-mini @if(talk.statutVote) { } else { btn-success }">
+			@if(talk.statutVote) { <i class="icon-thumbs-up"></i> Voter } else { <i class="icon-thumbs-down"></i> Retirer mon vote }
+		</a>
+		
+		<div class="consultation">
+			Consulté @talk.session.consultation fois
+		</div>
+	</div>
+	
+	<a href="@routes.Application.index" class="btn"><i class="icon-arrow-left"></i> Retour aux propositions</a>
+	
+	
 }

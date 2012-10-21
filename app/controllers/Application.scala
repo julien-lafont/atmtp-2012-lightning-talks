@@ -24,7 +24,7 @@ object Application extends Controller {
         Session.retirerVote(session)
       }
       
-      if (!req.queryString("redir").isEmpty) {
+      if (req.queryString.get("redir").isDefined) {
         Redirect(routes.Application.index)
       } else {
         Redirect(routes.Application.detail(slug))

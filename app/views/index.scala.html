@@ -22,6 +22,7 @@
 			<th><a href="@routes.Application.trier("titre")">Titre</a></th>
 			<th>Speeker</th>
 			<th><a href="@routes.Application.trier("vote")">Votes</a></th>
+			<th></th>
 		</tr>
 	</thead>
 	<tbody>
@@ -29,9 +30,11 @@
 		<tr>
 			<td><a href="@routes.Application.detail(talk.session.slug)">@talk.session.titre</a></td>
 			<td>@talk.orateur.nom</td>
-			<td class="lead">@talk.session.vote votes 
+			<td><span class="lead">@talk.session.vote votes</span></td>
+		  <td style="text-align:center"> 
 				<a href="@routes.Application.voter(talk.session.slug)?redir=home" class="btn btn-mini @if(talk.statutVote) { vote-off } else { btn-success vote-on }">
-					@if(talk.statutVote) { Voter } else { ✓ }
+					 
+					@if(talk.statutVote) { <i class="icon-thumbs-up"></i> Voter } else { ✓ }
 				</a>
 			</td>
 		</tr>
