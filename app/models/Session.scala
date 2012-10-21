@@ -74,6 +74,6 @@ object Session extends ModelCompanion[Session, ObjectId] {
     dao.insert(Session(titre = titre, slug = slugify(titre), description = description, orateurId = orateur))
     
   // TODO : Améliorer
-  private def slugify(titre: String) = titre.toLowerCase().replaceAll("[^a-zA-Z0-9-]", "-")
+  def slugify(titre: String) = titre.toLowerCase().replaceAll("[^a-zA-Z0-9-]", "-")
 
 }

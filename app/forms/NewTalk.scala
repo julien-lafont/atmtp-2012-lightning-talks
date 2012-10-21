@@ -22,7 +22,7 @@ object NewTalk {
     Orateur.insert(orateur).flatMap { orateurId =>
       val session = Session(
         titre = talk.titre,
-        slug = talk.titre.replaceAll(" ", "-"),
+        slug = Session.slugify(talk.titre),
         description = talk.description,
         orateurId = orateurId)
 
