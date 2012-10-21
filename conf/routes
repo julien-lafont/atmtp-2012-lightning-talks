@@ -16,16 +16,16 @@ GET     /lightning/:slug/voter      controllers.Application.voter(slug: String)
 #GET     /test                      controllers.Application.secured
 
 # Login page
-GET     /login                      securesocial.controllers.LoginPage.login
-GET     /logout                     securesocial.controllers.LoginPage.logout
+#GET     /login                      securesocial.controllers.LoginPage.login
+#GET     /logout                     securesocial.controllers.LoginPage.logout
 
 # User Registration
-GET     /signup                     securesocial.controllers.Registration.signUp
-POST    /signup                     securesocial.controllers.Registration.handleSignUp
+#GET     /signup                     securesocial.controllers.Registration.signUp
+#POST    /signup                     securesocial.controllers.Registration.handleSignUp
 
 # Providers entry points
-GET     /authenticate/:provider     securesocial.controllers.LoginPage.authenticate(provider)
-POST    /authenticate/:provider     securesocial.controllers.LoginPage.authenticateByPost(provider)
+#GET     /authenticate/:provider     securesocial.controllers.LoginPage.authenticate(provider)
+#POST    /authenticate/:provider     securesocial.controllers.LoginPage.authenticateByPost(provider)
 
 
 

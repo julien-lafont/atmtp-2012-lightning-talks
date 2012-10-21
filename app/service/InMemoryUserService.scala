@@ -14,7 +14,7 @@
  * limitations under the License.
  *
  */
-package service
+/*package service
 
 import play.api.Application
 import securesocial.core.{UserServicePlugin, UserId, SocialUser}
@@ -37,3 +37,4 @@ class InMemoryUserService(application: Application) extends UserServicePlugin(ap
     users = users + (user.id.id + user.id.providerId -> user)
   }
 }
+*/
