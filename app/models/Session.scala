@@ -9,6 +9,7 @@ import com.mongodb.casbah.Imports.{ MongoDBObject => $, _ }
 import com.novus.salat.dao.{ SalatDAO, ModelCompanion }
 import java.util.Date
 import play.api.mvc.RequestHeader
+import service.StringUtil
 
 case class Session(
   @Key("_id") id: ObjectId = new ObjectId,
@@ -73,9 +74,7 @@ object Session extends ModelCompanion[Session, ObjectId] {
   }
 
   def insertTestData(titre: String, description: String, orateur: ObjectId): Option[ObjectId] =
-    dao.insert(Session(titre = titre, slug = slugify(titre), description = description, orateurId = orateur))
+    dao.insert(Session(titre = titre, slug = service.StringUtil.slugify(titre), description = description, orateurId = orateur))
     
-  // TODO : Améliorer
-  def slugify(titre: String) = titre.toLowerCase().replaceAll("[^a-zA-Z0-9-]", "-")
 
 }

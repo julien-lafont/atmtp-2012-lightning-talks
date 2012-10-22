@@ -2,13 +2,14 @@
 
 @import play.api.i18n._
 @import views.html.helper._
+@import service.StringUtil._
 
 @**************************************************
 * Generate input according twitter bootsrap rules *
 **************************************************@
 
 <div class="control-group @elements.args.get('_class) @if(elements.hasErrors) {error}" id="@elements.args.get('_id).getOrElse(elements.id + "_field")">
-    <label class="control-label" for="@elements.id">@{elements.label(elements.lang).toString.split(" ").map(_ capitalize).mkString(" ")}</label>
+    <label class="control-label" for="@elements.id">@{capFirst(elements.label(elements.lang).toString)}</label>
     <div class="controls">
         @elements.input
         <span class="help-inline">@elements.errors(elements.lang).mkString(", ")</span>
