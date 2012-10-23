@@ -4,14 +4,15 @@
 @implicitField = @{ FieldConstructor(twitterBootstrapV2FieldConstructor.f) }
 
 @helper.form(action = routes.Propositions.enregistrer, 'class -> "form-horizontal") {
-
-	<legend>Proposer un Lightning Talk</legend>
+	<fieldset>
+		<legend>Proposer un Lightning Talk</legend>
+		
+	  @helper.inputText(talkForm("titre"), 'placeholder -> "Titre de votre Lightning Talk", 'class -> "input-xlarge")
+	  @helper.textarea(talkForm("description"), 'placeholder -> "Décrivez votre talk en quelques mots", 'class -> "input-xxlarge")
+	  @helper.inputText(talkForm("nom"), 'placeholder -> "Prénom Nom", '_label -> "Et vous ?")
+	  @helper.textarea(talkForm("bio"), 'placeholder -> "Qui êtes vous ?", '_label -> "Biographie", 'class -> "input-xxlarge")
+	  @helper.inputText(talkForm("twitter"), 'placeholder -> "Identifiant twitter", '_label -> "Identifiant")
 	
-  @helper.inputText(talkForm("titre"), 'placeholder -> "Titre de votre Lightning Talk", 'class -> "input-xlarge")
-  @helper.textarea(talkForm("description"), 'placeholder -> "Décrivez votre talk en quelques mots", 'class -> "input-xxlarge")
-  @helper.inputText(talkForm("nom"), 'placeholder -> "Prénom Nom", '_label -> "Et vous ?")
-  @helper.textarea(talkForm("bio"), 'placeholder -> "Qui êtes vous ?", '_label -> "Biographie", 'class -> "input-xxlarge")
-  @helper.inputText(talkForm("twitter"), 'placeholder -> "Identifiant twitter", '_label -> "Identifiant")
-
-  <input type="submit" class="btn" />
+	  <input type="submit" class="btn" />
+	</fieldset>
 }

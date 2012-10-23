@@ -8,11 +8,14 @@ import forms.NewTalk
 import play.api.data._
 import play.api.data.Forms._
 import play.api.data.validation.Constraints._
+import service.security.SecuredAction
 
 object Propositions extends Controller {
 
-  def formulaire = Action {
-    Ok(views.html.creer(talkForm))
+  def formulaire = SecuredAction.Authenticated { req =>
+    val formPreRempli = talkForm.bind(Map("twitter" -> req.user.username, "nom" -> req.user.name, "bio" -> req.user.description))
+      .copy(errors = Seq())
+    Ok(views.html.creer(formPreRempli))
   }
 
   def enregistrer = Action { implicit req =>
@@ -30,7 +33,6 @@ object Propositions extends Controller {
       "description" -> text.verifying(minLength(50)),
       "nom" -> text.verifying(nonEmpty),
       "bio" -> text.verifying(nonEmpty),
-      "twitter" -> text.verifying(nonEmpty))
-      (NewTalk.apply)(NewTalk.unapply))
+      "twitter" -> text.verifying(nonEmpty))(NewTalk.apply)(NewTalk.unapply))
 
 }

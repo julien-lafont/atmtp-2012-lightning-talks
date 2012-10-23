@@ -1,0 +1,14 @@
+@()
+
+@main("Lightning Talk - Connexion") {
+
+	<h2>Merci de vous connecter avant de soumettre votre Lightning Talk</h2>
+	
+	<p style="text-align: center">
+		<a href="@routes.Login.authenticate("twitter")" class="btn btn-large btn-info">Twitter</a>
+		<a href="#" class="btn btn-large disabled">Google +</a>
+		<a href="#" class="btn btn-large disabled">Facebook</a>
+		<a href="#" class="btn btn-large disabled">Viadeo</a>
+		<a href="#" class="btn btn-large disabled">LinkedIn</a>
+	</p>
+}
