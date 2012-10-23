@@ -18,8 +18,8 @@ object Propositions extends Controller {
     Ok(views.html.creer(formPreRempli))
   }
 
-  def enregistrer = Action { implicit req =>
-    talkForm.bindFromRequest.fold(
+  def enregistrer = SecuredAction.Authenticated { req =>
+    talkForm.bindFromRequest()(req.request).fold(
       formWithErrors => BadRequest(views.html.creer(formWithErrors)),
       talk => NewTalk.enregistrer(talk) match {
         case Some(session) => Redirect(routes.Application.detail(session.slug))
