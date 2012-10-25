@@ -1,6 +1,6 @@
 @()
 
-@main("Lightning Talk - Connexion") {
+@main("Lightning Talk - Connexion", None) {
 
 	<h2>Merci de vous connecter avant de soumettre votre Lightning Talk</h2>
 	
@@ -14,7 +14,7 @@
 	
 	<script type="text/javascript">
 		$(function() {
-			$("#providers .btn").tooltip({ placement: 'bottom', html: true, 	title: "Ce mode d'authentification sera bientôt disponible. Vous pouvez dès maintenant vous connecter via <strong>Twitter</strong>"});
+			$("#providers .btn.disabled").tooltip({ placement: 'bottom', html: true, 	title: "Ce mode d'authentification sera bientôt disponible. Vous pouvez dès maintenant vous connecter via <strong>Twitter</strong>"});
 		});
 	</script>
 }

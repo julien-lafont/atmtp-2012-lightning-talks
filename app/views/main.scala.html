@@ -1,4 +1,4 @@
-@(title: String)(content: Html)
+@(title: String, user: Option[service.auth.User])(content: Html)
 
 <!DOCTYPE html>
 
@@ -30,10 +30,11 @@
 					<ul class="nav">
 						<li><a href="@routes.Application.index">Propositions</a></li>
 						<li><a href="@routes.Propositions.formulaire">Soumettre mon LT</a></li>
+						<!-- <li><a href="http://atmontpellier2012.herokuapp.com" target="blank"><i>Programme Agile Tour Montpellier</i></a></li>-->
 					</ul>
 					
 					<ul class="nav pull-right">
-						<li><a href="http://atmontpellier2012.herokuapp.com" target="blank">Programme Agile Tour Montpellier</a></li>
+						<li><a href="#">@user.map { u => <img src="@u.avatar.getOrElse("")" width="25" /> @u.name }</a></li>
 					</ul>
 				</div>
 			</div>

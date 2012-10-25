@@ -1,6 +1,6 @@
-@(talk : models.Talk) 
+@(talk : models.Talk, user: Option[service.auth.User]) 
 
-@main("Lightning Talks Agile Tour Montpellier : "+talk.session.titre + talk.orateur.twitter.map{ tw => " (@"+tw+")" }.getOrElse("")) {
+@main("Lightning Talks Agile Tour Montpellier : "+talk.session.titre + talk.orateur.twitter.map{ tw => " (@"+tw+")" }.getOrElse(""), user) {
 
 	<div class="page-header">
 		<h1>

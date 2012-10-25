@@ -10,11 +10,12 @@ import play.api.data._
 import play.api.data.Forms._
 import play.api.data.validation.Constraints._
 import service.auth.providers.Twitter
+import service.auth.User
 
 object Application extends Controller {
 
   def index = Action { implicit req =>
-    Ok(views.html.index(Session.findAllTalks(getTriSession)))
+    Ok(views.html.index(Session.findAllTalks(getTriSession), User(req.session)))
   }
 
   def voter(slug: String) = Action { implicit req =>
@@ -35,7 +36,7 @@ object Application extends Controller {
 
   def detail(slug: String) = Action { implicit req =>
     Session.findBySlug(slug).map { session =>
-      Ok(views.html.detail(Session.consulter(session).withDetails))
+      Ok(views.html.detail(Session.consulter(session).withDetails, User(req.session)))
     }.getOrElse(NotFound)
   }
 

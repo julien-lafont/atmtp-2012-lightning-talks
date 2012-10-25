@@ -1,5 +1,5 @@
-@(talkForm: Form[forms.NewTalk])
+@(talkForm: Form[forms.NewTalk], user: Option[service.auth.User])
 
-@main("Lightning Talk - Soumettre un LT") {
+@main("Lightning Talk - Soumettre un LT", user) {
 	@widgets.formSession(talkForm) 
 }

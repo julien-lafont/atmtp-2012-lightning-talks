@@ -1,6 +1,6 @@
-@(talks : List[Talk]) 
+@(talks : List[Talk], user: Option[service.auth.User]) 
 
-@main("Lightning Talk - Agile Tour Montpellier 2012") {
+@main("Lightning Talk - Agile Tour Montpellier 2012", user) {
 
 <div class="alert message-accueil">
 	<p>
