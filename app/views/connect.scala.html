@@ -4,11 +4,17 @@
 
 	<h2>Merci de vous connecter avant de soumettre votre Lightning Talk</h2>
 	
-	<p style="text-align: center">
+	<p style="text-align: center" id="providers">
 		<a href="@routes.Login.authenticate("twitter")" class="btn btn-large btn-info">Twitter</a>
-		<a href="#" class="btn btn-large disabled">Google +</a>
+		<a href="#" class="btn btn-large disabled" rel="tooltip">Google +</a>
 		<a href="#" class="btn btn-large disabled">Facebook</a>
 		<a href="#" class="btn btn-large disabled">Viadeo</a>
 		<a href="#" class="btn btn-large disabled">LinkedIn</a>
 	</p>
+	
+	<script type="text/javascript">
+		$(function() {
+			$("#providers .btn").tooltip({ placement: 'bottom', html: true, 	title: "Ce mode d'authentification sera bientôt disponible. Vous pouvez dès maintenant vous connecter via <strong>Twitter</strong>"});
+		});
+	</script>
 }

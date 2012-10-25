@@ -22,3 +22,11 @@ body {
 #description {
 	height: 80px
 }
+
+#providers {
+	text-align: center
+}
+
+.tooltip {
+	font-size: 0.85em;
+}
