@@ -31,4 +31,8 @@ object Login extends Controller {
     }
   }
 
+  def logout = Action { 
+    Redirect(routes.Application.index).withNewSession
+  }
+
 }

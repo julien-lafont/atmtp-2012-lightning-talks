@@ -19,6 +19,7 @@ GET     /lightning/:slug/voter      controllers.Application.voter(slug: String)
 GET     /connect                    controllers.Login.connect
 GET     /auth/user                  controllers.Login.fetchUserInformations()
 GET     /auth/:provider             controllers.Login.authenticate(provider: String)
+GET     /logout                     controllers.Login.logout
 
 
 # Map static resources from the /public folder to the /assets URL path

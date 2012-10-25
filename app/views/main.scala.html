@@ -33,9 +33,12 @@
 						<!-- <li><a href="http://atmontpellier2012.herokuapp.com" target="blank"><i>Programme Agile Tour Montpellier</i></a></li>-->
 					</ul>
 					
+					@user.map { u => 
 					<ul class="nav pull-right">
-						<li><a href="#">@user.map { u => <img src="@u.avatar.getOrElse("")" width="25" /> @u.name }</a></li>
+						<li class="nom"><a href="#"><img src="@u.avatar.getOrElse("")" width="24" /> @u.name </a></li>
+						<li><a href="/logout">Déconnexion</a></li>
 					</ul>
+					}
 				</div>
 			</div>
 		</div>

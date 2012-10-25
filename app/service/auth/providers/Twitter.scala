@@ -10,7 +10,7 @@ class Twitter extends OAuthProvider {
   override val namespace = "tw"
 
   override def getUser(implicit req: RequestHeader) = {
-    fetch("https://api.twitter.com/1.1/account/verify_credentials.json").get().await(10000).fold(
+    fetch("https://api.twitter.com/1.1/account/verify_credentials.json").get().await(20000).fold(
       onError => {
         Logger.error("timed out waiting for Twitter")
         None
