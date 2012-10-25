@@ -35,3 +35,7 @@ body {
 	cursor: default;
 	color: #999
 }
+
+.avatar {
+	float: right
+}

@@ -13,14 +13,20 @@
 		</h1>
 	</div>
 	
+	@talk.orateur.twitter.map{ twitter =>
+		@if(twitter != "inconnu") {
+		<a href="https://twitter.com/@twitter" target="_blank">
+			<img src="https://api.twitter.com/1/users/profile_image/@twitter?size=bigger" class="avatar img-polaroid" />
+		</a>
+		}
+	}
+	
 	<!-- LaRache compliant -->
 	<p class="lead">@Html(talk.session.description.replaceAll("<", "").replaceAll("\n", "<br />"))</p>
 	
-	<blockquote>
-		@Html(talk.orateur.bio.replaceAll("<", "").replaceAll("\n", "<br />"))<br />
+	<blockquote>@Html(talk.orateur.bio.replaceAll("<", "").replaceAll("\n", "<br />"))<br />
 		<small>@talk.orateur.nom</small>
 	</blockquote>
-	
 	
 	<div class="alert alert-info">
 		<strong>@talk.session.nbVotesHtml</strong> &nbsp;&nbsp;
@@ -28,7 +34,6 @@
 		<a href="@routes.Application.voter(talk.session.slug)" class="btn btn-mini @if(talk.statutVote) { } else { btn-success }">
 			@if(talk.statutVote) { <i class="icon-thumbs-up"></i> Voter } else { <i class="icon-thumbs-down"></i> Retirer mon vote }
 		</a>
-		
 		
 		<div class="consultation">
 			
