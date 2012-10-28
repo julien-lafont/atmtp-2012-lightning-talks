@@ -33,6 +33,7 @@ object Application extends Controller {
         redirigerApresVote(slug).withCookies(cookieAvecVote)
       } else {
         Session.retirerVote(sess)
+       
         val cookie = req.cookies.get("vote").getOrElse(Cookie("vote", "", expireTime))
         val cookieSansVote = cookie.copy(value = cookie.value.split("-").filter(_ != id).mkString("-"), maxAge = expireTime)
         redirigerApresVote(slug).withCookies(cookieSansVote)

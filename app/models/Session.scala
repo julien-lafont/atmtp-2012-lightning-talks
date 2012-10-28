@@ -10,6 +10,7 @@ import com.novus.salat.dao.{ SalatDAO, ModelCompanion }
 import java.util.Date
 import play.api.mvc.RequestHeader
 import service.StringUtil
+import scala.util.Random
 
 case class Session(
   @Key("_id") id: ObjectId = new ObjectId,
@@ -51,7 +52,7 @@ object Session extends ModelCompanion[Session, ObjectId] {
   def findAll(tri: Option[(String, Int)] = Some(("date", -1))): List[Session] = {
     val finder = dao.find($.empty)
     if (tri.isDefined) finder.sort(orderBy = $(tri.get._1 -> tri.get._2)).toList
-    else finder.toList
+    else new Random().shuffle(finder.toList)
   }
 
   def findAllTalks(tri: Option[(String, Int)] = Some(("date", -1)))(implicit request: RequestHeader): List[Talk] =
