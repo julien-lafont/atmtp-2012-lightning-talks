@@ -18,7 +18,6 @@ object Login extends Controller {
 
   def fetchUserInformations() = Action { implicit request =>
     ProviderDispatching.get(request.session("provider")).getUser.map { user =>
-      println("Authentification : "+user)
       Redirect(routes.Propositions.formulaire).withSession(
           request.session 
           + ("user-username" -> user.username)

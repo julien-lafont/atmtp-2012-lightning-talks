@@ -10,6 +10,7 @@ import play.api.data.Forms._
 import play.api.data.validation.Constraints._
 import service.security.SecuredAction
 import service.auth.User
+import service.StringUtil
 
 object Propositions extends Controller {
 
@@ -34,6 +35,11 @@ object Propositions extends Controller {
       "description" -> text.verifying(minLength(50)),
       "nom" -> text.verifying(nonEmpty),
       "bio" -> text.verifying(nonEmpty),
-      "twitter" -> text.verifying(nonEmpty))(NewTalk.apply)(NewTalk.unapply))
+      "twitter" -> text.verifying(nonEmpty))
+    (NewTalk.apply)(NewTalk.unapply)
+    verifying("Cette session existe déjà !", talk => 
+      Session.findBySlug(StringUtil.slugify(talk.titre)).isEmpty
+    )
+  )
 
 }

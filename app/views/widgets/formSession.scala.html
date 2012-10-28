@@ -7,6 +7,10 @@
 	<fieldset>
 		<legend>Proposer un Lightning Talk</legend>
 		
+		@talkForm.globalError.map { error => 
+			<p class="alert alert-error"><strong>Oops !</strong> @error.message 	
+		}
+		
 	  @helper.inputText(talkForm("titre"), 'placeholder -> "Titre de votre Lightning Talk", 'class -> "input-xlarge")
 	  @helper.textarea(talkForm("description"), 'placeholder -> "Décrivez votre talk en quelques mots", 'class -> "input-xxlarge")
 	  @helper.inputText(talkForm("nom"), 'placeholder -> "Prénom Nom", '_label -> "Et vous ?")

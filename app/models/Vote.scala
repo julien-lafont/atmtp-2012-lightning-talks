@@ -14,6 +14,8 @@ case class Vote(
   @Key("session_id") sessionId: ObjectId,
   ip: String)
 
+/**
+ * @depreciated (vote sans vérif IP)
 object Vote extends ModelCompanion[Vote, ObjectId] {
   val dao = new SalatDAO[Vote, ObjectId](collection = mongoCollection("votes")) {}
 
@@ -25,4 +27,11 @@ object Vote extends ModelCompanion[Vote, ObjectId] {
 
   def peutVoter(session: Session)(implicit request: RequestHeader): Boolean =
     dao.findOne($("session_id" -> session.id, "ip" -> request.remoteAddress)).isEmpty
-}
+}*/
+
+object Vote {
+  
+  def peutVoter(session: Session)(implicit request: RequestHeader) : Boolean =
+    request.session.get(session.id.toString).isEmpty
+    
+} 

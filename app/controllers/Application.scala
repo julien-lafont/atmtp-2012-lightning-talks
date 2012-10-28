@@ -11,6 +11,7 @@ import play.api.data.Forms._
 import play.api.data.validation.Constraints._
 import service.auth.providers.Twitter
 import service.auth.User
+import play.api.mvc.Results.EmptyContent
 
 object Application extends Controller {
 
@@ -19,21 +20,27 @@ object Application extends Controller {
   }
 
   def voter(slug: String) = Action { implicit req =>
-    Session.findBySlug(slug).map { session =>
-      if (Vote.peutVoter(session)) {
-        Session.ajouterVote(session)
+    Session.findBySlug(slug).map { sess =>
+      val id = sess.id.toString
+
+      if (Vote.peutVoter(sess)) {
+        Session.ajouterVote(sess)
+        redirigerApresVote(slug).withSession(session + (id -> ""))
       } else {
-        Session.retirerVote(session)
+        Session.retirerVote(sess)
+        redirigerApresVote(slug).withSession(req.session - (id))
       }
-      
-      if (req.queryString.get("redir").isDefined) {
-        Redirect(routes.Application.index)
-      } else {
-        Redirect(routes.Application.detail(slug))
-      }
+
     }.getOrElse(NotFound)
   }
 
+  private def redirigerApresVote(slug: String)(implicit req : RequestHeader) : SimpleResult[EmptyContent] = {
+    if (req.queryString.get("redir").isDefined) {
+      Redirect(routes.Application.index)
+    } else {
+      Redirect(routes.Application.detail(slug))
+    }
+  }
   def detail(slug: String) = Action { implicit req =>
     Session.findBySlug(slug).map { session =>
       Ok(views.html.detail(Session.consulter(session).withDetails, User(req.session)))

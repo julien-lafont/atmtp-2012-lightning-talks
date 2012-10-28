@@ -59,12 +59,12 @@ object Session extends ModelCompanion[Session, ObjectId] {
 
   def ajouterVote(session: Session)(implicit req: RequestHeader) = {
     dao.save(session.copy(vote = session.vote + 1))
-    Vote.historiser(session)
+    //Vote.historiser(session)
   }
   
   def retirerVote(session: Session)(implicit req: RequestHeader) = {
     dao.save(session.copy(vote = session.vote - 1))
-    Vote.supprimer(session)
+    //Vote.supprimer(session)
   }
 
   def consulter(session: Session): Session = {
