@@ -10,4 +10,6 @@ conf/my-social.conf
 
 dump-mongo-db.sh
 restore-mongo-db.sh
+client-mongo-db.sh
+reset-vote.sh
 backup

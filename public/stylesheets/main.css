@@ -39,3 +39,8 @@ body {
 .avatar {
 	float: right
 }
+
+footer p {
+	text-align: right;
+	font-size: 13px
+}
