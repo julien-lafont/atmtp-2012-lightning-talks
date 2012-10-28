@@ -32,6 +32,6 @@ object Vote extends ModelCompanion[Vote, ObjectId] {
 object Vote {
   
   def peutVoter(session: Session)(implicit request: RequestHeader) : Boolean =
-    request.session.get(session.id.toString).isEmpty
+    request.cookies.get(session.id.toString).isEmpty
     
 } 

@@ -25,10 +25,10 @@ object Application extends Controller {
 
       if (Vote.peutVoter(sess)) {
         Session.ajouterVote(sess)
-        redirigerApresVote(slug).withSession(session + (id -> ""))
+        redirigerApresVote(slug).withCookies(Cookie(id, "1", 3456000))
       } else {
         Session.retirerVote(sess)
-        redirigerApresVote(slug).withSession(req.session - (id))
+        redirigerApresVote(slug).discardingCookies(id)
       }
 
     }.getOrElse(NotFound)
