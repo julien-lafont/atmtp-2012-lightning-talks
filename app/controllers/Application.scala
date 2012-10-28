@@ -14,6 +14,8 @@ import service.auth.User
 import play.api.mvc.Results.EmptyContent
 
 object Application extends Controller {
+  
+  private val expireTime = 3456000
 
   def index = Action { implicit req =>
     Ok(views.html.index(Session.findAllTalks(getTriSession), User(req.session)))
@@ -25,10 +27,15 @@ object Application extends Controller {
 
       if (Vote.peutVoter(sess)) {
         Session.ajouterVote(sess)
-        redirigerApresVote(slug).withCookies(Cookie(id, "1", 3456000))
+        
+        val cookie = req.cookies.get("vote").getOrElse(Cookie("vote", "", expireTime))
+        val cookieAvecVote = cookie.copy(value = cookie.value.split("-").+:(id).mkString("-"), maxAge = expireTime)
+        redirigerApresVote(slug).withCookies(cookieAvecVote)
       } else {
         Session.retirerVote(sess)
-        redirigerApresVote(slug).discardingCookies(id)
+        val cookie = req.cookies.get("vote").getOrElse(Cookie("vote", "", expireTime))
+        val cookieSansVote = cookie.copy(value = cookie.value.split("-").filter(_ != id).mkString("-"), maxAge = expireTime)
+        redirigerApresVote(slug).withCookies(cookieSansVote)
       }
 
     }.getOrElse(NotFound)

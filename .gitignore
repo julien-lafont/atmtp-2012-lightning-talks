@@ -9,4 +9,5 @@ dist
 conf/my-social.conf
 
 dump-mongo-db.sh
+restore-mongo-db.sh
 backup
